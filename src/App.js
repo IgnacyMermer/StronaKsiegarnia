@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import MainScreen from './MainScreen';
+import Navbar from './components/Navbar';
+import FavouritesScreen from './pages/FavouritesScreen';
+import BookDetailsScreen from './pages/BookDetailsScreen';
+import './firebase'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{marginTop:'80px'}}>
+      <Router>
+        <header>
+          <Navbar/>
+        </header>
+        <Routes>
+          <Route path='/' element={<MainScreen/>}/>
+          <Route path='/favourites' element={<FavouritesScreen/>}/>
+          <Route path='/book_details' element={<BookDetailsScreen/>}/>
+        </Routes>
+      </Router>
     </div>
   );
 }
